@@ -58,6 +58,8 @@ public class Robot extends TimedRobot {
     private final Color kRed = ColorMatch.makeColor(0.561, 0.232, 0.114);
     private final Color kYellow = ColorMatch.makeColor(0.361, 0.524, 0.113);
 
+    public String colorString;
+
     // Add all of the subsystems to the subsystem list
     static {
         subsystemLs.add(driveSubsystem);
@@ -91,13 +93,11 @@ public class Robot extends TimedRobot {
     @Override
     public void robotPeriodic() {
         Color detectedColor = m_colorSensor.getColor();
-
-        String colorString;
         ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
-        double IR = m_colorSensor.getIR();
         int prox = m_colorSensor.getProximity();
-        
+        boolean inRange = false;
 
+        // Colour Checking (Printed to Shuffleboard)
         if (match.color == kBlue) {
             colorString = "Blue"; 
         } else if (match.color == kRed) {
@@ -109,14 +109,17 @@ public class Robot extends TimedRobot {
         } else {
             colorString = "idk man";
         }
-        //Shuffleboard.getTab("Colour Received");
         
+        // Range Checking (Printed to Shuffleboard)
+        if(prox <= 150){
+            inRange = true;
+        }else{
+            inRange = false;
+        }
 
-        SmartDashboard.putNumber("Dist", prox);
-        SmartDashboard.putString("Stupid Face", colorString);
-        SmartDashboard.putNumber("R", detectedColor.red);
-        SmartDashboard.putNumber("G", detectedColor.green);
-        SmartDashboard.putNumber("B", detectedColor.blue);
+        //TODO Tune the range to an accurate distance for WheelOfFortune
+        SmartDashboard.putBoolean("Range", inRange);
+        SmartDashboard.putString("Color", colorString);
         
 
     }

@@ -109,7 +109,6 @@ public class TRumbleManager {
 
         updateRumble();
 
-        SmartDashboard.putBoolean(smartDashboardName, state == State.ON);
     }
 
 }

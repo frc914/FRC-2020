@@ -52,7 +52,5 @@ public class DriveSelector {
     }
 
     public void updatePeriodic() {
-        SmartDashboard.putString("Drive Control", String.valueOf(getDriveControlType()));
-        SmartDashboard.putString("Single Stick Side", String.valueOf(getSingleStickSide()));
     }
 }

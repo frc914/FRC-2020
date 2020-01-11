@@ -26,7 +26,7 @@ public class PowerSubsystem extends TSubsystem {
     // Periodically update the dashboard and any PIDs or sensors
     @Override
     public void updatePeriodic() {
-        SmartDashboard.putData("PDP", pdp);
+        SmartDashboard.putData("PDP Usage", pdp);
     }
 
     @Override
