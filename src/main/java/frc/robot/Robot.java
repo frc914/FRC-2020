@@ -98,20 +98,20 @@ public class Robot extends TimedRobot {
         boolean inRange = false;
 
         // Colour Checking (Printed to Shuffleboard)
-        if (match.color == kBlue) {
+        if (match.color == kBlue && prox >= 175) {
             colorString = "Blue"; 
-        } else if (match.color == kRed) {
+        } else if (match.color == kRed && prox >= 175) {
             colorString = "Red";
-        } else if (match.color == kGreen) {
+        } else if (match.color == kGreen && prox >= 175) {
             colorString = "Green";
-        } else if (match.color == kYellow) {
+        } else if (match.color == kYellow && prox >= 175) {
             colorString = "Yellow";
         } else {
             colorString = "idk man";
         }
         
         // Range Checking (Printed to Shuffleboard)
-        if(prox <= 150){
+        if(prox >= 175){
             inRange = true;
         }else{
             inRange = false;
@@ -119,7 +119,9 @@ public class Robot extends TimedRobot {
 
         //TODO Tune the range to an accurate distance for WheelOfFortune
         SmartDashboard.putBoolean("Range", inRange);
+        SmartDashboard.putNumber("Rng", prox);
         SmartDashboard.putString("Color", colorString);
+        
         
 
     }

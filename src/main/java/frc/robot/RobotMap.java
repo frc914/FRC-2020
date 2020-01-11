@@ -1,6 +1,7 @@
 package frc.robot;
 
 import com.torontocodingcollective.TConst;
+import com.torontocodingcollective.sensors.gyro.TAnalogGyro;
 import com.torontocodingcollective.speedcontroller.TCanSpeedController.TCanSpeedControllerType;
 import com.torontocodingcollective.speedcontroller.TPwmSpeedController.TPwmSpeedControllerType;
 
@@ -41,8 +42,8 @@ public class RobotMap {
     // ******************************************
     // Gyro Ports
     // ******************************************
-    public static final int                     GYRO_PORT;
-    public static final boolean                 GYRO_ISINVERTED;
+    public static final int                     ANALOG_PORT;
+    public static final boolean                 ANALOG_ISINVERTED;
 
     // ******************************************
     // Pneumatics Ports
@@ -76,8 +77,8 @@ public class RobotMap {
             // PWM Constants
             // Talons, Victors and Sparks connected through Pwm
 
-            GYRO_PORT       = 0;
-            GYRO_ISINVERTED = TConst.NOT_INVERTED;
+            ANALOG_PORT       = 0;
+            ANALOG_ISINVERTED = TConst.NOT_INVERTED;
         }
     }
 }
