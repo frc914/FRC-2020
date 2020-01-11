@@ -59,16 +59,16 @@ public class RobotMap {
         default:
             // CAN Constants
             // Talons, Victors and Sparks connected through the CAN Bus
-            LEFT_DRIVE_CAN_SPEED_CONTROLLER_ADDRESS           = 3;
+            LEFT_DRIVE_CAN_SPEED_CONTROLLER_ADDRESS           = 1;
             LEFT_DRIVE_CAN_SPEED_CONTROLLER_TYPE              = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
             LEFT_DRIVE_CAN_FOLLOWER_SPEED_CONTROLLER_ADDRESS  = 4;
             LEFT_DRIVE_CAN_FOLLOWER_SPEED_CONTROLLER_TYPE     = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
             LEFT_DRIVE_CAN_MOTOR_ISINVERTED                   = TConst.INVERTED;
             LEFT_DRIVE_CAN_ENCODER_ISINVERTED                 = TConst.INVERTED;
 
-            RIGHT_DRIVE_CAN_SPEED_CONTROLLER_ADDRESS          = 1;
+            RIGHT_DRIVE_CAN_SPEED_CONTROLLER_ADDRESS          = 2;
             RIGHT_DRIVE_CAN_SPEED_CONTROLLER_TYPE             = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
-            RIGHT_DRIVE_CAN_FOLLOWER_SPEED_CONTROLLER_ADDRESS = 2;
+            RIGHT_DRIVE_CAN_FOLLOWER_SPEED_CONTROLLER_ADDRESS = 3;
             RIGHT_DRIVE_CAN_FOLLOWER_SPEED_CONTROLLER_TYPE    = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
             RIGHT_DRIVE_CAN_MOTOR_ISINVERTED                  = TConst.NOT_INVERTED;
             RIGHT_DRIVE_CAN_ENCODER_ISINVERTED                = TConst.NOT_INVERTED;
