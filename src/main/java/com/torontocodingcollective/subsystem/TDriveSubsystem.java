@@ -440,23 +440,10 @@ public abstract class TDriveSubsystem extends TSubsystem {
 
             }
 
-            // Update all SmartDashboard values
-            SmartDashboard.putNumber("L Enc Dist", leftEncoder.get());
-            SmartDashboard.putNumber("L Enc Speed", leftEncoder.getRate());
-            SmartDashboard.putNumber("R Enc Dist", rightEncoder.get());
-            SmartDashboard.putNumber("R Enc Speed", rightEncoder.getRate());
-            SmartDashboard.putNumber("AvgEnc Dist", getEncoderDistance());
-            SmartDashboard.putNumber("AvgEnc Speed", getEncoderSpeed());
-            SmartDashboard.putNumber("Dist Inches", getDistanceInches());
-
-            SmartDashboard.putBoolean("Speed PIDs Active", speedPidsEnabled);
-            SmartDashboard.putData("LeftPid", leftSpeedPid);
-            SmartDashboard.putData("RightPid", rightSpeedPid);
+            // Update all SmartDashboard value
         }
 
         // Always print the current motor set speeds.
-        SmartDashboard.putNumber("Left Output", leftSpeedController.get());
-        SmartDashboard.putNumber("Right Output", rightSpeedController.get());
     }
 
 }

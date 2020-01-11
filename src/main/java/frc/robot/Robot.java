@@ -12,6 +12,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
+
+
+
 import frc.robot.commands.AutonomousCommand;
 import frc.robot.oi.AutoSelector;
 import frc.robot.oi.OI;
@@ -21,6 +24,7 @@ import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.subsystems.PowerSubsystem;
 
 import com.revrobotics.ColorSensorV3;
+import com.revrobotics.ColorSensorV3.*;
 import com.revrobotics.ColorMatchResult;
 import com.revrobotics.ColorMatch;
 
@@ -82,7 +86,6 @@ public class Robot extends TimedRobot {
         m_colorMatcher.addColorMatch(kGreen);
         m_colorMatcher.addColorMatch(kRed);
         m_colorMatcher.addColorMatch(kYellow);
-    System.out.println("vs code is ass");
     }
 
     @Override
@@ -92,9 +95,11 @@ public class Robot extends TimedRobot {
         String colorString;
         ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
         double IR = m_colorSensor.getIR();
+        int prox = m_colorSensor.getProximity();
+        
 
         if (match.color == kBlue) {
-            colorString = "Blue";
+            colorString = "Blue"; 
         } else if (match.color == kRed) {
             colorString = "Red";
         } else if (match.color == kGreen) {
@@ -104,15 +109,18 @@ public class Robot extends TimedRobot {
         } else {
             colorString = "idk man";
         }
+        //Shuffleboard.getTab("Colour Received");
+        
 
-        SmartDashboard.putNumber("Blue", detectedColor.blue);
-        SmartDashboard.putNumber("Red", detectedColor.red);
-        SmartDashboard.putNumber("Green", detectedColor.green);
-        SmartDashboard.putNumber("IR", IR);
-        SmartDashboard.putNumber("Confidence", match.confidence); //what does this do
-        SmartDashboard.putString("Detected Color", colorString);
+        SmartDashboard.putNumber("Dist", prox);
+        SmartDashboard.putString("Stupid Face", colorString);
+        SmartDashboard.putNumber("R", detectedColor.red);
+        SmartDashboard.putNumber("G", detectedColor.green);
+        SmartDashboard.putNumber("B", detectedColor.blue);
+        
+
     }
-
+ 
     /**
      * This function is called once each time the robot enters Disabled mode. You
      * can use it to reset any subsystem information you want to clear when the
