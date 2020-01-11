@@ -6,9 +6,12 @@ import java.util.List;
 
 import com.torontocodingcollective.subsystem.TSubsystem;
 
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.commands.AutonomousCommand;
 import frc.robot.oi.AutoSelector;
 import frc.robot.oi.OI;
@@ -16,6 +19,11 @@ import frc.robot.subsystems.CameraSubsystem;
 import frc.robot.subsystems.CanDriveSubsystem;
 import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.subsystems.PowerSubsystem;
+
+import com.revrobotics.ColorSensorV3;
+import com.revrobotics.ColorMatchResult;
+import com.revrobotics.ColorMatch;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,6 +44,15 @@ public class Robot extends TimedRobot {
     public static OI                        oi;
 
     private Command                         autoCommand;
+
+    private final I2C.Port i2cPort = I2C.Port.kOnboard;
+    private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+    private final ColorMatch m_colorMatcher = new ColorMatch();
+
+    private final Color kBlue = ColorMatch.makeColor(0.143, 0.427, 0.429);
+    private final Color kGreen = ColorMatch.makeColor(0.197, 0.561, 0.240);
+    private final Color kRed = ColorMatch.makeColor(0.561, 0.232, 0.114);
+    private final Color kYellow = ColorMatch.makeColor(0.361, 0.524, 0.113);
 
     // Add all of the subsystems to the subsystem list
     static {
@@ -60,6 +77,40 @@ public class Robot extends TimedRobot {
         }
 
         AutoSelector.init();
+
+        m_colorMatcher.addColorMatch(kBlue);
+        m_colorMatcher.addColorMatch(kGreen);
+        m_colorMatcher.addColorMatch(kRed);
+        m_colorMatcher.addColorMatch(kYellow);
+    System.out.println("vs code is ass");
+    }
+
+    @Override
+    public void robotPeriodic() {
+        Color detectedColor = m_colorSensor.getColor();
+
+        String colorString;
+        ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
+        double IR = m_colorSensor.getIR();
+
+        if (match.color == kBlue) {
+            colorString = "Blue";
+        } else if (match.color == kRed) {
+            colorString = "Red";
+        } else if (match.color == kGreen) {
+            colorString = "Green";
+        } else if (match.color == kYellow) {
+            colorString = "Yellow";
+        } else {
+            colorString = "idk man";
+        }
+
+        SmartDashboard.putNumber("Blue", detectedColor.blue);
+        SmartDashboard.putNumber("Red", detectedColor.red);
+        SmartDashboard.putNumber("Green", detectedColor.green);
+        SmartDashboard.putNumber("IR", IR);
+        SmartDashboard.putNumber("Confidence", match.confidence); //what does this do
+        SmartDashboard.putString("Detected Color", colorString);
     }
 
     /**
