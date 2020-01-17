@@ -24,7 +24,6 @@ import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.subsystems.PowerSubsystem;
 
 import com.revrobotics.ColorSensorV3;
-import com.revrobotics.ColorSensorV3.*;
 import com.revrobotics.ColorMatchResult;
 import com.revrobotics.ColorMatch;
 
@@ -117,7 +116,6 @@ public class Robot extends TimedRobot {
             inRange = false;
         }
 
-        //TODO Tune the range to an accurate distance for WheelOfFortune
         SmartDashboard.putBoolean("Range", inRange);
         SmartDashboard.putNumber("Rng", prox);
         SmartDashboard.putString("Color", colorString);
