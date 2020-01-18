@@ -1,25 +1,28 @@
-package com.torontocodingcollective.subsystem;
+package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import com.torontocodingcollective.subsystem.TSubsystem;
+
 
 /**
- * TSubsystem
- * <p>
- * Extends the CommandBased Subsystem to add init() and updatePeriodic
+ *
  */
-public abstract class TSubsystem extends Subsystem {
+public class IntakeSubsystem extends TSubsystem {
 
-    /**
-     * Initialize the subsystem
-     */
-    public abstract void init();
+    public IntakeSubsystem() {
 
-    /**
-     * Update Periodic
-     * <p>
-     * This routine should be used for updating elements (like PIDs) that need to
-     * run on every control loop, and to update the SmartDashboard values.
-     */
-    public abstract void updatePeriodic();
+    }
+
+    @Override
+    public void init() {
+    }
+
+    // Periodically update the dashboard and any PIDs or sensors
+    @Override
+    public void updatePeriodic() {
+    }
+
+    @Override
+    protected void initDefaultCommand() {
+    }
 
 }

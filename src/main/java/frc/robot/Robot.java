@@ -22,6 +22,9 @@ import frc.robot.subsystems.CameraSubsystem;
 import frc.robot.subsystems.CanDriveSubsystem;
 import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.subsystems.PowerSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.WheelOfFortuneSubsystem;
 
 import com.revrobotics.ColorSensorV3;
 import com.revrobotics.ColorMatchResult;
@@ -39,10 +42,13 @@ public class Robot extends TimedRobot {
 
     public static final List<TSubsystem>    subsystemLs         = new ArrayList<TSubsystem>();
 
-    public static final CanDriveSubsystem   driveSubsystem      = new CanDriveSubsystem();
-    public static final PneumaticsSubsystem pneumaticsSubsystem = new PneumaticsSubsystem();
-    public static final PowerSubsystem      powerSubsystem      = new PowerSubsystem();
-    public static final CameraSubsystem     cameraSubsystem     = new CameraSubsystem();
+    public static final CanDriveSubsystem           driveSubsystem              = new CanDriveSubsystem();
+    public static final PneumaticsSubsystem         pneumaticsSubsystem         = new PneumaticsSubsystem();
+    public static final PowerSubsystem              powerSubsystem              = new PowerSubsystem();
+    public static final CameraSubsystem             cameraSubsystem             = new CameraSubsystem();
+    public static final IntakeSubsystem             intakeSubsystem             = new IntakeSubsystem();
+    public static final ShooterSubsystem            shooterSubsystem            = new ShooterSubsystem();
+    public static final WheelOfFortuneSubsystem     wheeloffortunateSubsystem   = new WheelOfFortuneSubsystem();
 
     public static OI                        oi;
 
@@ -65,6 +71,9 @@ public class Robot extends TimedRobot {
         subsystemLs.add(pneumaticsSubsystem);
         subsystemLs.add(powerSubsystem);
         subsystemLs.add(cameraSubsystem);
+        subsystemLs.add(intakeSubsystem);
+        subsystemLs.add(shooterSubsystem);
+        subsystemLs.add(wheeloffortunateSubsystem);
     }
 
     /**
@@ -77,7 +86,7 @@ public class Robot extends TimedRobot {
         oi = new OI();
         oi.init();
 
-        for (TSubsystem subsystem : subsystemLs) {
+        for (final TSubsystem subsystem : subsystemLs) {
             subsystem.init();
         }
 
@@ -91,9 +100,9 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotPeriodic() {
-        Color detectedColor = m_colorSensor.getColor();
-        ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
-        int prox = m_colorSensor.getProximity();
+        final Color detectedColor = m_colorSensor.getColor();
+        final ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
+        final int prox = m_colorSensor.getProximity();
         boolean inRange = false;
 
         // Colour Checking (Printed to Shuffleboard)
@@ -229,7 +238,7 @@ public class Robot extends TimedRobot {
     private void updatePeriodic() {
 
         // Update all subsystems
-        for (TSubsystem subsystem : subsystemLs) {
+        for (final TSubsystem subsystem : subsystemLs) {
             subsystem.updatePeriodic();
         }
     }
