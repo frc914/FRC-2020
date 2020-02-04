@@ -47,6 +47,17 @@ public class RobotMap {
     public static final TCanSpeedControllerType BALL_ELEVATOR_CAN_SPEED_CONTROLLER_TYPE;
     public static final int                     BALL_ELEVATOR_CAN_SPEED_CONTROLLER_ADDRESS;
     public static final boolean                 BALL_ELEVATOR_CAN_MOTOR_ISINVERTED;
+    
+    public static final int                     LEFT_SHOOTER_CAN_SPEED_CONTROLLER_ADDRESS;
+    public static final TCanSpeedControllerType LEFT_SHOOTER_CAN_SPEED_CONTROLLER_TYPE;
+    public static final boolean                 LEFT_SHOOTER_CAN_MOTOR_ISINVERTED;
+
+    public static final int                     RIGHT_SHOOTER_CAN_SPEED_CONTROLLER_ADDRESS;
+    public static final TCanSpeedControllerType RIGHT_SHOOTER_CAN_SPEED_CONTROLLER_TYPE;
+    public static final boolean                 RIGHT_SHOOTER_CAN_MOTOR_ISINVERTED;
+
+    public static final boolean                 LEFT_SHOOTER_CAN_ENCODER_ISINVERTED;
+    public static final boolean                 RIGHT_SHOOTER_CAN_ENCODER_ISINVERTED;
 
     // ******************************************
     // PWM addresses
@@ -99,6 +110,16 @@ public class RobotMap {
             BALL_ELEVATOR_CAN_SPEED_CONTROLLER_ADDRESS        = 9; // TODO: check/change
             BALL_ELEVATOR_CAN_SPEED_CONTROLLER_TYPE           = TCanSpeedControllerType.VICTOR_SPX;
             BALL_ELEVATOR_CAN_MOTOR_ISINVERTED                = TConst.NOT_INVERTED;
+            
+            LEFT_SHOOTER_CAN_SPEED_CONTROLLER_ADDRESS           = 5;
+            LEFT_SHOOTER_CAN_SPEED_CONTROLLER_TYPE              = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
+            LEFT_SHOOTER_CAN_MOTOR_ISINVERTED                   = TConst.INVERTED;
+            LEFT_SHOOTER_CAN_ENCODER_ISINVERTED                 = TConst.INVERTED;
+
+            RIGHT_SHOOTER_CAN_SPEED_CONTROLLER_ADDRESS          = 6;
+            RIGHT_SHOOTER_CAN_SPEED_CONTROLLER_TYPE             = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
+            RIGHT_SHOOTER_CAN_MOTOR_ISINVERTED                  = TConst.NOT_INVERTED;
+            RIGHT_SHOOTER_CAN_ENCODER_ISINVERTED                = TConst.NOT_INVERTED;
 
             // PWM Constants
             // Talons, Victors and Sparks connected through Pwm

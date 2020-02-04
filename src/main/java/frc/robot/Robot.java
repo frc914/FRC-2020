@@ -11,16 +11,9 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 
 
@@ -52,12 +45,11 @@ public class Robot extends TimedRobot {
 
     public static final List<TSubsystem>    subsystemLs         = new ArrayList<TSubsystem>();
 
-    public static final CanDriveSubsystem   driveSubsystem      = new CanDriveSubsystem();
-    public static final PneumaticsSubsystem pneumaticsSubsystem = new PneumaticsSubsystem();
-    public static final PowerSubsystem      powerSubsystem      = new PowerSubsystem();
-    public static final CameraSubsystem     cameraSubsystem     = new CameraSubsystem();
-    public final        ADXRS450_Gyro       gyro                = new ADXRS450_Gyro(Port.kOnboardCS0);
-  
+    public static final CanDriveSubsystem           driveSubsystem              = new CanDriveSubsystem();
+    public static final PneumaticsSubsystem         pneumaticsSubsystem         = new PneumaticsSubsystem();
+    public static final PowerSubsystem              powerSubsystem              = new PowerSubsystem();
+    public static final CameraSubsystem             cameraSubsystem             = new CameraSubsystem();
+    public final        ADXRS450_Gyro               gyro                        = new ADXRS450_Gyro(Port.kOnboardCS0);
     public static final IntakeSubsystem             intakeSubsystem             = new IntakeSubsystem();
     public static final ShooterSubsystem            shooterSubsystem            = new ShooterSubsystem();
     public static final WheelOfFortuneSubsystem     wheeloffortunateSubsystem   = new WheelOfFortuneSubsystem();
