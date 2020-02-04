@@ -52,23 +52,15 @@ public class Robot extends TimedRobot {
 
     public static final List<TSubsystem>    subsystemLs         = new ArrayList<TSubsystem>();
 
-<<<<<<< HEAD
     public static final CanDriveSubsystem   driveSubsystem      = new CanDriveSubsystem();
     public static final PneumaticsSubsystem pneumaticsSubsystem = new PneumaticsSubsystem();
     public static final PowerSubsystem      powerSubsystem      = new PowerSubsystem();
     public static final CameraSubsystem     cameraSubsystem     = new CameraSubsystem();
     public final        ADXRS450_Gyro       gyro                = new ADXRS450_Gyro(Port.kOnboardCS0);
-    
-    
-=======
-    public static final CanDriveSubsystem           driveSubsystem              = new CanDriveSubsystem();
-    public static final PneumaticsSubsystem         pneumaticsSubsystem         = new PneumaticsSubsystem();
-    public static final PowerSubsystem              powerSubsystem              = new PowerSubsystem();
-    public static final CameraSubsystem             cameraSubsystem             = new CameraSubsystem();
+  
     public static final IntakeSubsystem             intakeSubsystem             = new IntakeSubsystem();
     public static final ShooterSubsystem            shooterSubsystem            = new ShooterSubsystem();
     public static final WheelOfFortuneSubsystem     wheeloffortunateSubsystem   = new WheelOfFortuneSubsystem();
->>>>>>> 82dd7329800c224098b07904585b9178f6e5c2f5
 
     public static OI                        oi;
 
@@ -148,14 +140,10 @@ public class Robot extends TimedRobot {
         }else{
             inRange = false;
         }
-<<<<<<< HEAD
         //gyro b r o k e
          double currAng = gyro.getAngle();
          currAng=currAng - 0.155;
         //TODO Tune the range to an accurate distance for WheelOfFortune
-=======
-
->>>>>>> 82dd7329800c224098b07904585b9178f6e5c2f5
         SmartDashboard.putBoolean("Range", inRange);
         SmartDashboard.putNumber("Rng", prox);
         SmartDashboard.putString("Color", colorString);
