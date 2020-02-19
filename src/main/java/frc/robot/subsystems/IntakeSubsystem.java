@@ -34,10 +34,6 @@ public class IntakeSubsystem extends TSubsystem {
 
     //3 motors - rollers, wrist, ball tower; 1 encoder - wrist; beam break - ball tower
 
-    public IntakeSubsystem() {
-
-    }
-
     @Override
     public void init() {
     }
@@ -87,6 +83,4 @@ public class IntakeSubsystem extends TSubsystem {
     public void ballElevatorStop() {
         ballElevatorMotor.set(0);
     }
-
-    
 }

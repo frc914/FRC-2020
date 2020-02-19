@@ -14,10 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-
-
-
-
+import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.commands.AutonomousCommand;
 import frc.robot.oi.AutoSelector;
 import frc.robot.oi.OI;
@@ -68,6 +65,9 @@ public class Robot extends TimedRobot {
     private final Color kYellow = ColorMatch.makeColor(0.361, 0.524, 0.113);
 
     public String colorString;
+
+    public final DigitalInput beamBreakSensor = new DigitalInput(0); //TODO change
+    public Boolean beamBreak;
 
     // Add all of the subsystems to the subsystem list
     static {
@@ -141,6 +141,13 @@ public class Robot extends TimedRobot {
         SmartDashboard.putString("Color", colorString);
         
         SmartDashboard.putNumber("Gyro", (int)currAng);
+
+        //probably wrong if im being honest (i only really know programming beam breaks in c++ oops)
+        beamBreak = beamBreakSensor.get();
+        if (beamBreak == true)
+            SmartDashboard.putBoolean("Balls don't exist", true);
+        else if (beamBreak == false)
+            SmartDashboard.putBoolean("Balls exist", false);
 
     }
  
