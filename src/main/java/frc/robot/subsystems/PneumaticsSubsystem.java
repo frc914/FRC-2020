@@ -42,13 +42,6 @@ public class PneumaticsSubsystem extends TSubsystem {
     @Override
     public void updatePeriodic() {
 
-        if (compressor != null) {
-            SmartDashboard.putBoolean("Compressor", compressor.enabled());
-            SmartDashboard.putBoolean("Compressor Enabled", compressor.getClosedLoopControl());
-        } else {
-            SmartDashboard.putBoolean("Compressor", false);
-            SmartDashboard.putBoolean("Compressor Enabled", false);
-        }
     }
 
 }

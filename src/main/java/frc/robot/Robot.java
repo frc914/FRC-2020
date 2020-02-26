@@ -6,9 +6,15 @@ import java.util.List;
 
 import com.torontocodingcollective.subsystem.TSubsystem;
 
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.util.Color;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.commands.AutonomousCommand;
 import frc.robot.oi.AutoSelector;
 import frc.robot.oi.OI;
@@ -16,6 +22,14 @@ import frc.robot.subsystems.CameraSubsystem;
 import frc.robot.subsystems.CanDriveSubsystem;
 import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.subsystems.PowerSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.WheelOfFortuneSubsystem;
+
+import com.revrobotics.ColorSensorV3;
+import com.revrobotics.ColorMatchResult;
+import com.revrobotics.ColorMatch;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,14 +42,32 @@ public class Robot extends TimedRobot {
 
     public static final List<TSubsystem>    subsystemLs         = new ArrayList<TSubsystem>();
 
-    public static final CanDriveSubsystem   driveSubsystem      = new CanDriveSubsystem();
-    public static final PneumaticsSubsystem pneumaticsSubsystem = new PneumaticsSubsystem();
-    public static final PowerSubsystem      powerSubsystem      = new PowerSubsystem();
-    public static final CameraSubsystem     cameraSubsystem     = new CameraSubsystem();
+    public static final CanDriveSubsystem           driveSubsystem              = new CanDriveSubsystem();
+    public static final PneumaticsSubsystem         pneumaticsSubsystem         = new PneumaticsSubsystem();
+    public static final PowerSubsystem              powerSubsystem              = new PowerSubsystem();
+    public static final CameraSubsystem             cameraSubsystem             = new CameraSubsystem();
+    public final        ADXRS450_Gyro               gyro                        = new ADXRS450_Gyro(Port.kOnboardCS0);
+    public static final IntakeSubsystem             intakeSubsystem             = new IntakeSubsystem();
+    public static final ShooterSubsystem            shooterSubsystem            = new ShooterSubsystem();
+    public static final WheelOfFortuneSubsystem     wheeloffortunateSubsystem   = new WheelOfFortuneSubsystem();
 
     public static OI                        oi;
 
     private Command                         autoCommand;
+
+    private final I2C.Port i2cPort = I2C.Port.kOnboard;
+    private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+    private final ColorMatch m_colorMatcher = new ColorMatch();
+
+    private final Color kBlue = ColorMatch.makeColor(0.143, 0.427, 0.429);
+    private final Color kGreen = ColorMatch.makeColor(0.197, 0.561, 0.240);
+    private final Color kRed = ColorMatch.makeColor(0.561, 0.232, 0.114);
+    private final Color kYellow = ColorMatch.makeColor(0.361, 0.524, 0.113);
+
+    public String colorString;
+
+    public final DigitalInput beamBreakSensor = new DigitalInput(0); //TODO change
+    public Boolean beamBreak;
 
     // Add all of the subsystems to the subsystem list
     static {
@@ -43,6 +75,9 @@ public class Robot extends TimedRobot {
         subsystemLs.add(pneumaticsSubsystem);
         subsystemLs.add(powerSubsystem);
         subsystemLs.add(cameraSubsystem);
+        subsystemLs.add(intakeSubsystem);
+        subsystemLs.add(shooterSubsystem);
+        subsystemLs.add(wheeloffortunateSubsystem);
     }
 
     /**
@@ -51,17 +86,71 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
-
+    
         oi = new OI();
         oi.init();
 
-        for (TSubsystem subsystem : subsystemLs) {
+        for (final TSubsystem subsystem : subsystemLs) {
             subsystem.init();
         }
-
+        
         AutoSelector.init();
+
+        m_colorMatcher.addColorMatch(kBlue);
+        m_colorMatcher.addColorMatch(kGreen);
+        m_colorMatcher.addColorMatch(kRed);
+        m_colorMatcher.addColorMatch(kYellow);
+        
+        gyro.calibrate();
     }
 
+    
+
+    @Override
+    public void robotPeriodic() {
+        final Color detectedColor = m_colorSensor.getColor();
+        final ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
+        final int prox = m_colorSensor.getProximity();
+        boolean inRange = false;
+
+        // Colour Checking (Printed to Shuffleboard)
+        if (match.color == kBlue && prox >= 175) {
+            colorString = "Blue"; 
+        } else if (match.color == kRed && prox >= 175) {
+            colorString = "Red";
+        } else if (match.color == kGreen && prox >= 175) {
+            colorString = "Green";
+        } else if (match.color == kYellow && prox >= 175) {
+            colorString = "Yellow";
+        } else {
+            colorString = "idk man";
+        }
+        
+        // Range Checking (Printed to Shuffleboard)
+        if(prox >= 175){
+            inRange = true;
+        }else{
+            inRange = false;
+        }
+        //gyro b r o k e
+         double currAng = gyro.getAngle();
+         currAng=currAng - 0.155;
+        //TODO Tune the range to an accurate distance for WheelOfFortune
+        SmartDashboard.putBoolean("Range", inRange);
+        SmartDashboard.putNumber("Rng", prox);
+        SmartDashboard.putString("Color", colorString);
+        
+        SmartDashboard.putNumber("Gyro", (int)currAng);
+
+        //probably wrong if im being honest (i only really know programming beam breaks in c++ oops)
+        beamBreak = beamBreakSensor.get();
+        if (beamBreak == true)
+            SmartDashboard.putBoolean("Balls don't exist", true);
+        else if (beamBreak == false)
+            SmartDashboard.putBoolean("Balls exist", false);
+
+    }
+ 
     /**
      * This function is called once each time the robot enters Disabled mode. You
      * can use it to reset any subsystem information you want to clear when the
@@ -167,7 +256,7 @@ public class Robot extends TimedRobot {
     private void updatePeriodic() {
 
         // Update all subsystems
-        for (TSubsystem subsystem : subsystemLs) {
+        for (final TSubsystem subsystem : subsystemLs) {
             subsystem.updatePeriodic();
         }
     }

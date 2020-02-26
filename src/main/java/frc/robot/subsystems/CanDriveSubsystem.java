@@ -19,11 +19,11 @@ import frc.robot.commands.drive.DefaultDriveCommand;
  */
 public class CanDriveSubsystem extends TGyroDriveSubsystem {
 
-    private static final boolean LOW_GEAR     = false;
-    private static final boolean HIGH_GEAR    = true;
+    private static final boolean LOW_GEAR     = true;
+    private static final boolean HIGH_GEAR    = false;
 
     private Solenoid             shifter      = new Solenoid(RobotMap.SHIFTER_PNEUMATIC_PORT);
-    private boolean              turboEnabled = false;
+    private Boolean              shiftState   = false;
 
     public CanDriveSubsystem() {
 
@@ -45,7 +45,7 @@ public class CanDriveSubsystem extends TGyroDriveSubsystem {
                         RobotMap.RIGHT_DRIVE_CAN_MOTOR_ISINVERTED),
 
                 // Gyro used for this subsystem
-                new TAnalogGyro(RobotMap.GYRO_PORT, RobotMap.GYRO_ISINVERTED),
+                new TAnalogGyro(RobotMap.ANALOG_PORT, RobotMap.ANALOG_ISINVERTED),
 
                 // Gyro PID Constants
                 RobotConst.DRIVE_GYRO_PID_KP,
@@ -77,29 +77,29 @@ public class CanDriveSubsystem extends TGyroDriveSubsystem {
     }
 
     // ********************************************************************************************************************
-    // Turbo routines
+    // Shifting routines
     // ********************************************************************************************************************
     public void enableTurbo() {
-        turboEnabled = true;
+        shiftState = true;
         setMaxEncoderSpeed(RobotConst.MAX_HIGH_GEAR_SPEED);
         shifter.set(HIGH_GEAR);
     }
 
     public void disableTurbo() {
-        turboEnabled = false;
+        shiftState = false;
         setMaxEncoderSpeed(RobotConst.MAX_LOW_GEAR_SPEED);
         shifter.set(LOW_GEAR);
     }
 
-    public boolean isTurboEnabled() {
-        return turboEnabled;
+    public boolean isShifter() {
+        return shiftState;
     }
 
     @Override
     public void updatePeriodic() {
         super.updatePeriodic();
 
-        SmartDashboard.putBoolean("Turbo Enabled", isTurboEnabled());
+        SmartDashboard.putBoolean("Shifter State", isShifter());
     }
 
 }

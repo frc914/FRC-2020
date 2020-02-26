@@ -6,6 +6,7 @@ import com.torontocodingcollective.commands.gyroDrive.TDriveOnHeadingDistanceCom
 import com.torontocodingcollective.commands.gyroDrive.TRotateToHeadingCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import frc.robot.Robot;
 import frc.robot.oi.AutoSelector;
 
@@ -44,7 +45,10 @@ public class AutonomousCommand extends CommandGroup {
      * sensor information relevant to when the command is run.
      */
     public AutonomousCommand() {
-
+            //TODO use getAngle(), reset() to find out where it is located and to reset it at begining
+            
+        
+            
         // getting info
         String robotStartPosition = AutoSelector.getRobotStartPosition();
         String pattern            = AutoSelector.getPattern();

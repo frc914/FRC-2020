@@ -19,19 +19,6 @@ public class DriveSelector {
 
     {
         // Drive Type
-        driveControlType = new SendableChooser<>();
-        driveControlType.setDefaultOption(DRIVE_CONTROL_TYPE_ARCADE, DRIVE_CONTROL_TYPE_ARCADE);
-        driveControlType.addOption(DRIVE_CONTROL_TYPE_TANK, DRIVE_CONTROL_TYPE_TANK);
-        driveControlType.addOption(DRIVE_CONTROL_TYPE_SINGLE_STICK, DRIVE_CONTROL_TYPE_SINGLE_STICK);
-
-        SmartDashboard.putData("Drive Type", driveControlType);
-
-        // Single Stick Side
-        singleStickSide = new SendableChooser<>();
-        singleStickSide.setDefaultOption(SINGLE_STICK_RIGHT, SINGLE_STICK_RIGHT);
-        singleStickSide.addOption(SINGLE_STICK_LEFT, SINGLE_STICK_LEFT);
-
-        SmartDashboard.putData("Single Stick Side", singleStickSide);
     }
 
     /**
@@ -65,7 +52,5 @@ public class DriveSelector {
     }
 
     public void updatePeriodic() {
-        SmartDashboard.putString("Drive Control", String.valueOf(getDriveControlType()));
-        SmartDashboard.putString("Single Stick Side", String.valueOf(getSingleStickSide()));
     }
 }
