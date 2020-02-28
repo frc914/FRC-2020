@@ -34,6 +34,7 @@ public class OI extends TOi {
 
     private TGameController driverController = new TGameController_Logitech(0);
     private TRumbleManager  driverRumble     = new TRumbleManager("Driver", driverController);
+    private TGameController opController     = new TGameController_Logitech(1); //TODO change if necessary, i just needed it to exist
 
     private TToggle         compressorToggle = new TToggle(driverController, TStick.LEFT);
     private TToggle         speedPidToggle   = new TToggle(driverController, TStick.RIGHT);
@@ -100,6 +101,34 @@ public class OI extends TOi {
 
     public void setSpeedPidEnabled(boolean state) {
         speedPidToggle.set(state);
+    }
+
+    /************************
+    *       OPERATOR        *
+    *************************/
+    //TODO also change, also needed their existence
+    public boolean intakeFwd() {
+        return opController.getButton(TButton.RIGHT_BUMPER);
+    }
+
+    public boolean intakeBkd() {
+        return opController.getButton(TButton.LEFT_BUMPER);
+    }
+
+    public boolean elevatorUp() {
+        return opController.getButton(TButton.A);
+    }
+
+    public boolean elevatorDown() {
+        return opController.getButton(TButton.B);
+    }
+
+    public boolean wristUp() {
+        return opController.getButton(TButton.X);
+    }
+
+    public boolean wristDown() {
+        return opController.getButton(TButton.Y);
     }
 
     @Override
