@@ -60,9 +60,19 @@ public class RobotMap {
     public static final TCanSpeedControllerType WHEEL_FORTUNE_CAN_SPEED_CONTROLLER_TYPE;
     public static final boolean                 WHEEL_FORTUNE_CAN_MOTOR_ISINVERTED;
 
+    public static final int                     LEFT_CLIMB_CAN_SPEED_CONTROLLER_ADDRESS;
+    public static final TCanSpeedControllerType LEFT_CLIMB_CAN_SPEED_CONTROLLER_TYPE;
+    public static final boolean                 LEFT_CLIMB_CAN_MOTOR_ISINVERTED;
+
+    public static final int                     RIGHT_CLIMB_CAN_SPEED_CONTROLLER_ADDRESS;
+    public static final TCanSpeedControllerType RIGHT_CLIMB_CAN_SPEED_CONTROLLER_TYPE;
+    public static final boolean                 RIGHT_CLIMB_CAN_MOTOR_ISINVERTED;
+
     public static final boolean                 LEFT_SHOOTER_CAN_ENCODER_ISINVERTED;
     public static final boolean                 RIGHT_SHOOTER_CAN_ENCODER_ISINVERTED;
     public static final boolean                 WHEEL_FORTUNE_CAN_ENCODER_ISINVERTED;
+    public static final boolean                 LEFT_CLIMB_CAN_ENCODER_ISINVERTED;
+    public static final boolean                 RIGHT_CLIMB_CAN_ENCODER_ISINVERTED;
 
 
 
@@ -132,6 +142,16 @@ public class RobotMap {
             WHEEL_FORTUNE_CAN_SPEED_CONTROLLER_TYPE;            = TCanSpeedControllerType.TALON_SRX;
             WHEEL_FORTUNE_CAN_MOTOR_ISINVERTED;                 = TConst.NOT_INVERTED;
             WHEEL_FORTUNE_CAN_ENCODER_ISINVERTED;               = TConst.NOT_INVERTED;
+
+            LEFT_CLIMB_CAN_SPEED_CONTROLLER_ADDRESS             = 11;
+            LEFT_CLIMB_CAN_SPEED_CONTROLLER_TYPE;               = TCanSpeedControllerType.TALON_SRX;
+            LEFT_CLIMB_CAN_MOTOR_ISINVERTED;                    = TConst.NOT_INVERTED;
+            LEFT_CLIMB_CAN_ENCODER_ISINVERTED;                  = TConst.NOT_INVERTED;
+
+            RIGHT_CLIMB_CAN_SPEED_CONTROLLER_ADDRESS             = 12;
+            RIGHT_CLIMB_CAN_SPEED_CONTROLLER_TYPE;               = TCanSpeedControllerType.TALON_SRX;
+            RIGHT_CLIMB_CAN_MOTOR_ISINVERTED;                    = TConst.NOT_INVERTED;
+            RIGHT_CLIMB_CAN_ENCODER_ISINVERTED;                  = TConst.NOT_INVERTED;
 
             // PWM Constants
             // Talons, Victors and Sparks connected through Pwm

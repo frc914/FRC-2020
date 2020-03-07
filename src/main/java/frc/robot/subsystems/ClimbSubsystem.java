@@ -1,28 +1,27 @@
 package frc.robot.subsystems;
 
+import com.torontocodingcollective.speedcontroller.TCanSpeedController;
 import com.torontocodingcollective.subsystem.TSubsystem;
+import frc.robot.RobotMap;
+import frc.robot.RobotMap.*;
 
 
 /**
  *
  */
-public class WheelOfFortuneSubsystem extends TSubsystem {
+public class ClimbSubsystem extends TSubsystem {
 
-    public WheelOfFortuneSubsystem() {
+    public ClimbSubsystem() {
+
+    }
+    public goUp
+    {
+
+    }
+    public goDown{
 
     }
 
-    @Override
-    public void init() {
-    }
 
-    // Periodically update the dashboard and any PIDs or sensors
-    @Override
-    public void updatePeriodic() {
-    }
-
-    @Override
-    protected void initDefaultCommand() {
-    }
 
 }
