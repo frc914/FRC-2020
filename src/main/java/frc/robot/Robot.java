@@ -135,7 +135,7 @@ public class Robot extends TimedRobot {
         //gyro b r o k e
          double currAng = gyro.getAngle();
         //  currAng=currAng - 0.155;
-         gyro.getAngle() = currAng;
+        //gyro.getAngle() = currAng;
 
         //TODO Tune the range to an accurate distance for WheelOfFortune
         SmartDashboard.putBoolean("Range", inRange);

@@ -103,14 +103,14 @@ public class RobotMap {
             // Talons, Victors and Sparks connected through the CAN Bus
             LEFT_DRIVE_CAN_SPEED_CONTROLLER_ADDRESS           = 1;
             LEFT_DRIVE_CAN_SPEED_CONTROLLER_TYPE              = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
-            LEFT_DRIVE_CAN_FOLLOWER_SPEED_CONTROLLER_ADDRESS  = 4;
+            LEFT_DRIVE_CAN_FOLLOWER_SPEED_CONTROLLER_ADDRESS  = 2;
             LEFT_DRIVE_CAN_FOLLOWER_SPEED_CONTROLLER_TYPE     = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
             LEFT_DRIVE_CAN_MOTOR_ISINVERTED                   = TConst.INVERTED;
             LEFT_DRIVE_CAN_ENCODER_ISINVERTED                 = TConst.INVERTED;
 
-            RIGHT_DRIVE_CAN_SPEED_CONTROLLER_ADDRESS          = 2;
+            RIGHT_DRIVE_CAN_SPEED_CONTROLLER_ADDRESS          = 3;
             RIGHT_DRIVE_CAN_SPEED_CONTROLLER_TYPE             = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
-            RIGHT_DRIVE_CAN_FOLLOWER_SPEED_CONTROLLER_ADDRESS = 3;
+            RIGHT_DRIVE_CAN_FOLLOWER_SPEED_CONTROLLER_ADDRESS = 4;
             RIGHT_DRIVE_CAN_FOLLOWER_SPEED_CONTROLLER_TYPE    = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
             RIGHT_DRIVE_CAN_MOTOR_ISINVERTED                  = TConst.NOT_INVERTED;
             RIGHT_DRIVE_CAN_ENCODER_ISINVERTED                = TConst.NOT_INVERTED;
@@ -128,30 +128,30 @@ public class RobotMap {
             BALL_ELEVATOR_CAN_SPEED_CONTROLLER_TYPE           = TCanSpeedControllerType.VICTOR_SPX;
             BALL_ELEVATOR_CAN_MOTOR_ISINVERTED                = TConst.NOT_INVERTED;
             
-            LEFT_SHOOTER_CAN_SPEED_CONTROLLER_ADDRESS           = 5;
-            LEFT_SHOOTER_CAN_SPEED_CONTROLLER_TYPE              = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
-            LEFT_SHOOTER_CAN_MOTOR_ISINVERTED                   = TConst.INVERTED;
-            LEFT_SHOOTER_CAN_ENCODER_ISINVERTED                 = TConst.INVERTED;
+            LEFT_SHOOTER_CAN_SPEED_CONTROLLER_ADDRESS         = 5;
+            LEFT_SHOOTER_CAN_SPEED_CONTROLLER_TYPE            = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
+            LEFT_SHOOTER_CAN_MOTOR_ISINVERTED                 = TConst.INVERTED;
+            LEFT_SHOOTER_CAN_ENCODER_ISINVERTED               = TConst.INVERTED;
 
-            RIGHT_SHOOTER_CAN_SPEED_CONTROLLER_ADDRESS          = 6;
-            RIGHT_SHOOTER_CAN_SPEED_CONTROLLER_TYPE             = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
-            RIGHT_SHOOTER_CAN_MOTOR_ISINVERTED                  = TConst.NOT_INVERTED;
-            RIGHT_SHOOTER_CAN_ENCODER_ISINVERTED                = TConst.NOT_INVERTED;
+            RIGHT_SHOOTER_CAN_SPEED_CONTROLLER_ADDRESS        = 6;
+            RIGHT_SHOOTER_CAN_SPEED_CONTROLLER_TYPE           = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
+            RIGHT_SHOOTER_CAN_MOTOR_ISINVERTED                = TConst.NOT_INVERTED;
+            RIGHT_SHOOTER_CAN_ENCODER_ISINVERTED              = TConst.NOT_INVERTED;
 
-            WHEEL_FORTUNE_CAN_SPEED_CONTROLLER_ADDRESS          = 10;
-            WHEEL_FORTUNE_CAN_SPEED_CONTROLLER_TYPE;            = TCanSpeedControllerType.TALON_SRX;
-            WHEEL_FORTUNE_CAN_MOTOR_ISINVERTED;                 = TConst.NOT_INVERTED;
-            WHEEL_FORTUNE_CAN_ENCODER_ISINVERTED;               = TConst.NOT_INVERTED;
+            WHEEL_FORTUNE_CAN_SPEED_CONTROLLER_ADDRESS        = 10;
+            WHEEL_FORTUNE_CAN_SPEED_CONTROLLER_TYPE           = TCanSpeedControllerType.TALON_SRX;
+            WHEEL_FORTUNE_CAN_MOTOR_ISINVERTED                = TConst.NOT_INVERTED;
+            WHEEL_FORTUNE_CAN_ENCODER_ISINVERTED              = TConst.NOT_INVERTED;
 
-            LEFT_CLIMB_CAN_SPEED_CONTROLLER_ADDRESS             = 11;
-            LEFT_CLIMB_CAN_SPEED_CONTROLLER_TYPE;               = TCanSpeedControllerType.TALON_SRX;
-            LEFT_CLIMB_CAN_MOTOR_ISINVERTED;                    = TConst.NOT_INVERTED;
-            LEFT_CLIMB_CAN_ENCODER_ISINVERTED;                  = TConst.NOT_INVERTED;
+            LEFT_CLIMB_CAN_SPEED_CONTROLLER_ADDRESS           = 11;
+            LEFT_CLIMB_CAN_SPEED_CONTROLLER_TYPE              = TCanSpeedControllerType.TALON_SRX;
+            LEFT_CLIMB_CAN_MOTOR_ISINVERTED                   = TConst.NOT_INVERTED;
+            LEFT_CLIMB_CAN_ENCODER_ISINVERTED                 = TConst.NOT_INVERTED;
 
-            RIGHT_CLIMB_CAN_SPEED_CONTROLLER_ADDRESS             = 12;
-            RIGHT_CLIMB_CAN_SPEED_CONTROLLER_TYPE;               = TCanSpeedControllerType.TALON_SRX;
-            RIGHT_CLIMB_CAN_MOTOR_ISINVERTED;                    = TConst.NOT_INVERTED;
-            RIGHT_CLIMB_CAN_ENCODER_ISINVERTED;                  = TConst.NOT_INVERTED;
+            RIGHT_CLIMB_CAN_SPEED_CONTROLLER_ADDRESS          = 12;
+            RIGHT_CLIMB_CAN_SPEED_CONTROLLER_TYPE             = TCanSpeedControllerType.TALON_SRX;
+            RIGHT_CLIMB_CAN_MOTOR_ISINVERTED                  = TConst.NOT_INVERTED;
+            RIGHT_CLIMB_CAN_ENCODER_ISINVERTED                = TConst.NOT_INVERTED;
 
             // PWM Constants
             // Talons, Victors and Sparks connected through Pwm

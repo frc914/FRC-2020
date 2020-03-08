@@ -14,11 +14,29 @@ public class ClimbSubsystem extends TSubsystem {
     public ClimbSubsystem() {
 
     }
-    public goUp
-    {
+    public void goUp(){
+    
 
     }
-    public goDown{
+    public void goDown(){
+
+    }
+
+    @Override
+    public void init() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void updatePeriodic() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    protected void initDefaultCommand() {
+        // TODO Auto-generated method stub
 
     }
 
