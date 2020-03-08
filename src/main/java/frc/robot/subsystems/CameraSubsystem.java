@@ -14,9 +14,9 @@ public class CameraSubsystem extends TSubsystem {
     public CameraSubsystem() {
 
         //Uncomment this line to start a USB camera feed
-        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-        camera.setVideoMode(PixelFormat.kMJPEG, 120, 90, 50);
-        camera.setExposureManual(40);
+        // UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+        // camera.setVideoMode(PixelFormat.kMJPEG, 120, 90, 50);
+        // camera.setExposureManual(40);
 
         /*
          * Switchable camera feed
