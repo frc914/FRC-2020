@@ -8,10 +8,13 @@ import com.torontocodingcollective.subsystem.TSubsystem;
 
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+
 
 
 
@@ -46,6 +49,7 @@ public class Robot extends TimedRobot {
     public static final PneumaticsSubsystem         pneumaticsSubsystem         = new PneumaticsSubsystem();
     public static final PowerSubsystem              powerSubsystem              = new PowerSubsystem();
     public static final CameraSubsystem             cameraSubsystem             = new CameraSubsystem();
+    public final        ADXRS450_Gyro               gyro                        = new ADXRS450_Gyro(Port.kOnboardCS0);
     public static final IntakeSubsystem             intakeSubsystem             = new IntakeSubsystem();
     public static final ShooterSubsystem            shooterSubsystem            = new ShooterSubsystem();
     public static final WheelOfFortuneSubsystem     wheeloffortunateSubsystem   = new WheelOfFortuneSubsystem();
@@ -82,21 +86,25 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
-
+    
         oi = new OI();
         oi.init();
 
         for (final TSubsystem subsystem : subsystemLs) {
             subsystem.init();
         }
-
+        
         AutoSelector.init();
 
         m_colorMatcher.addColorMatch(kBlue);
         m_colorMatcher.addColorMatch(kGreen);
         m_colorMatcher.addColorMatch(kRed);
         m_colorMatcher.addColorMatch(kYellow);
+        
+        gyro.calibrate();
     }
+
+    
 
     @Override
     public void robotPeriodic() {
@@ -124,12 +132,15 @@ public class Robot extends TimedRobot {
         }else{
             inRange = false;
         }
+        //gyro b r o k e
+         double currAng = gyro.getAngle();
+         currAng=currAng - 0.155;
 
         SmartDashboard.putBoolean("Range", inRange);
         SmartDashboard.putNumber("Rng", prox);
         SmartDashboard.putString("Color", colorString);
         
-        
+        SmartDashboard.putNumber("Gyro", (int)currAng);
 
     }
  
