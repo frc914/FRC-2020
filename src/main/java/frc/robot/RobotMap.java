@@ -35,6 +35,19 @@ public class RobotMap {
     public static final boolean                 LEFT_DRIVE_CAN_ENCODER_ISINVERTED;
     public static final boolean                 RIGHT_DRIVE_CAN_ENCODER_ISINVERTED;
 
+    public static final TCanSpeedControllerType INTAKE_ROLLER_CAN_SPEED_CONTROLLER_TYPE;
+    public static final int                     INTAKE_ROLLER_CAN_SPEED_CONTROLLER_ADDRESS;
+    public static final boolean                 INTAKE_ROLLER_MOTOR_ISINVERTED;
+
+    public static final TCanSpeedControllerType WRIST_CAN_SPEED_CONTROLLER_TYPE;
+    public static final int                     WRIST_CAN_SPEED_CONTROLLER_ADDRESS;
+    public static final boolean                 WRIST_CAN_MOTOR_ISINVERTED;
+    public static final boolean                 WRIST_CAN_ENCODER_ISINVERTED;
+
+    public static final TCanSpeedControllerType BALL_ELEVATOR_CAN_SPEED_CONTROLLER_TYPE;
+    public static final int                     BALL_ELEVATOR_CAN_SPEED_CONTROLLER_ADDRESS;
+    public static final boolean                 BALL_ELEVATOR_CAN_MOTOR_ISINVERTED;
+    
     public static final int                     LEFT_SHOOTER_CAN_SPEED_CONTROLLER_ADDRESS;
     public static final TCanSpeedControllerType LEFT_SHOOTER_CAN_SPEED_CONTROLLER_TYPE;
     public static final boolean                 LEFT_SHOOTER_CAN_MOTOR_ISINVERTED;
@@ -92,6 +105,19 @@ public class RobotMap {
             RIGHT_DRIVE_CAN_MOTOR_ISINVERTED                  = TConst.NOT_INVERTED;
             RIGHT_DRIVE_CAN_ENCODER_ISINVERTED                = TConst.NOT_INVERTED;
 
+            INTAKE_ROLLER_CAN_SPEED_CONTROLLER_ADDRESS        = 7; // TODO: check/change
+            INTAKE_ROLLER_CAN_SPEED_CONTROLLER_TYPE           = TCanSpeedControllerType.VICTOR_SPX;
+            INTAKE_ROLLER_MOTOR_ISINVERTED                    = TConst.NOT_INVERTED;
+            
+            WRIST_CAN_SPEED_CONTROLLER_ADDRESS                = 8; // TODO: check/change
+            WRIST_CAN_SPEED_CONTROLLER_TYPE                   = TCanSpeedControllerType.TALON_SRX;
+            WRIST_CAN_MOTOR_ISINVERTED                        = TConst.NOT_INVERTED;
+            WRIST_CAN_ENCODER_ISINVERTED                      = TConst.NOT_INVERTED;
+
+            BALL_ELEVATOR_CAN_SPEED_CONTROLLER_ADDRESS        = 9; // TODO: check/change
+            BALL_ELEVATOR_CAN_SPEED_CONTROLLER_TYPE           = TCanSpeedControllerType.VICTOR_SPX;
+            BALL_ELEVATOR_CAN_MOTOR_ISINVERTED                = TConst.NOT_INVERTED;
+            
             LEFT_SHOOTER_CAN_SPEED_CONTROLLER_ADDRESS           = 5;
             LEFT_SHOOTER_CAN_SPEED_CONTROLLER_TYPE              = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
             LEFT_SHOOTER_CAN_MOTOR_ISINVERTED                   = TConst.INVERTED;
