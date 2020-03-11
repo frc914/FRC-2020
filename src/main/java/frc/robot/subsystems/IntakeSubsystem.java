@@ -21,13 +21,11 @@ public class IntakeSubsystem extends TSubsystem {
     
         @Override
         public int get() {
-            // TODO Auto-generated method stub
             return 0;
         }
 
         @Override
         public double getRate() {
-            // TODO Auto-generated method stub
             return 0;
         }
     };
