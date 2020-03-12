@@ -1,6 +1,6 @@
 package com.torontocodingcollective.pid;
 
-import edu.wpi.first.wpilibj.PIDOutput;
+ import edu.wpi.first.wpilibj.PIDOutput;
 
 /**
  * A null PID Output
