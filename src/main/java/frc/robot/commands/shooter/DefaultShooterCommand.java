@@ -43,7 +43,28 @@ public class DefaultShooterCommand extends TSafeCommand {
     @Override
     protected void execute() {
 
-    }
+        if (Robot.oi.wristUp()) {
+            Robot.shooterSubsystem.wristUp();
+          }
+          else if (Robot.oi.wristDown()) {
+            Robot.shooterSubsystem.wristDown();
+          }
+          else {
+            Robot.shooterSubsystem.wristStop();
+          }
+        
+
+        //Shooter
+        if (Robot.oi.shoot()) {
+            Robot.shooterSubsystem.shootFwd();
+          }
+          else if (Robot.oi.shootBack()) {
+            Robot.shooterSubsystem.shootBkd();
+          }
+          else {
+            Robot.shooterSubsystem.shootStop();
+          }
+        }  
 
     // Make this return true when this Command no longer needs to run execute()
     @Override

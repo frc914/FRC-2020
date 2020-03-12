@@ -25,13 +25,9 @@ public class RobotConst {
     // *********************************************************
     // For Ultrasonic Calibration
     // *********************************************************
-    public static final double  ULTRASONIC_VOLTAGE_20IN       = 0.191;
-    public static final double  ULTRASONIC_VOLTAGE_40IN       = 0.383;
-    public static final double  ULTRASONIC_VOLTAGE_80IN       = 0.764;
-
-    public static enum Direction {
-        FORWARD, BACKWARD
-    };
+    
+    public static final double[]  WRIST_LEVELS = { 0,480, 583 , 1130, 1950, 2200 };
+    public static final double    WRIST_TOLERANCE = 20;
 
     // The TorontoCodingCollective framework was developed to run on different
     // robots through the use of multiple mappings and constants.

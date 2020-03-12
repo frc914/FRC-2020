@@ -39,10 +39,9 @@ public class RobotMap {
     public static final int                     INTAKE_ROLLER_CAN_SPEED_CONTROLLER_ADDRESS;
     public static final boolean                 INTAKE_ROLLER_MOTOR_ISINVERTED;
 
-    public static final TCanSpeedControllerType WRIST_CAN_SPEED_CONTROLLER_TYPE;
-    public static final int                     WRIST_CAN_SPEED_CONTROLLER_ADDRESS;
-    public static final boolean                 WRIST_CAN_MOTOR_ISINVERTED;
-    public static final boolean                 WRIST_CAN_ENCODER_ISINVERTED;
+    public static final TCanSpeedControllerType CHASSIS_EDGE_CAN_SPEED_CONTROLLER_TYPE;
+    public static final int                     CHASSIS_EDGE_CAN_SPEED_CONTROLLER_ADDRESS;
+    public static final boolean                 CHASSIS_EDGE_CAN_MOTOR_ISINVERTED;
 
     public static final TCanSpeedControllerType BALL_ELEVATOR_CAN_SPEED_CONTROLLER_TYPE;
     public static final int                     BALL_ELEVATOR_CAN_SPEED_CONTROLLER_ADDRESS;
@@ -68,13 +67,18 @@ public class RobotMap {
     public static final TCanSpeedControllerType RIGHT_CLIMB_CAN_SPEED_CONTROLLER_TYPE;
     public static final boolean                 RIGHT_CLIMB_CAN_MOTOR_ISINVERTED;
 
+    public static final int                     WRIST_CAN_SPEED_CONTROLLER_ADDRESS;
+    public static final TCanSpeedControllerType WRIST_CAN_SPEED_CONTROLLER_TYPE;
+    public static final boolean                 WRIST_CAN_MOTOR_ISINVERTED;
+
     public static final boolean                 LEFT_SHOOTER_CAN_ENCODER_ISINVERTED;
     public static final boolean                 RIGHT_SHOOTER_CAN_ENCODER_ISINVERTED;
+
+    public static final boolean                 WRIST_CAN_ENCODER_ISINVERTED;
+
     public static final boolean                 WHEEL_FORTUNE_CAN_ENCODER_ISINVERTED;
     public static final boolean                 LEFT_CLIMB_CAN_ENCODER_ISINVERTED;
     public static final boolean                 RIGHT_CLIMB_CAN_ENCODER_ISINVERTED;
-
-
 
     // ******************************************
     // PWM addresses
@@ -121,15 +125,14 @@ public class RobotMap {
             INTAKE_ROLLER_CAN_SPEED_CONTROLLER_ADDRESS        = 7; // TODO: check/change
             INTAKE_ROLLER_CAN_SPEED_CONTROLLER_TYPE           = TCanSpeedControllerType.VICTOR_SPX;
             INTAKE_ROLLER_MOTOR_ISINVERTED                    = TConst.NOT_INVERTED;
-            
-            WRIST_CAN_SPEED_CONTROLLER_ADDRESS                = 8; // TODO: check/change
-            WRIST_CAN_SPEED_CONTROLLER_TYPE                   = TCanSpeedControllerType.TALON_SRX;
-            WRIST_CAN_MOTOR_ISINVERTED                        = TConst.NOT_INVERTED;
-            WRIST_CAN_ENCODER_ISINVERTED                      = TConst.NOT_INVERTED;
 
             BALL_ELEVATOR_CAN_SPEED_CONTROLLER_ADDRESS        = 9; // TODO: check/change
             BALL_ELEVATOR_CAN_SPEED_CONTROLLER_TYPE           = TCanSpeedControllerType.VICTOR_SPX;
             BALL_ELEVATOR_CAN_MOTOR_ISINVERTED                = TConst.NOT_INVERTED;
+
+            CHASSIS_EDGE_CAN_SPEED_CONTROLLER_ADDRESS        = 10; // TODO: check/change
+            CHASSIS_EDGE_CAN_SPEED_CONTROLLER_TYPE           = TCanSpeedControllerType.VICTOR_SPX;
+            CHASSIS_EDGE_CAN_MOTOR_ISINVERTED                = TConst.NOT_INVERTED;
             
             LEFT_SHOOTER_CAN_SPEED_CONTROLLER_ADDRESS         = 5;
             LEFT_SHOOTER_CAN_SPEED_CONTROLLER_TYPE            = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
@@ -155,6 +158,11 @@ public class RobotMap {
             RIGHT_CLIMB_CAN_SPEED_CONTROLLER_TYPE             = TCanSpeedControllerType.TALON_SRX;
             RIGHT_CLIMB_CAN_MOTOR_ISINVERTED                  = TConst.NOT_INVERTED;
             RIGHT_CLIMB_CAN_ENCODER_ISINVERTED                = TConst.NOT_INVERTED;
+
+            WRIST_CAN_SPEED_CONTROLLER_ADDRESS                  = 7;
+            WRIST_CAN_SPEED_CONTROLLER_TYPE                     = TCanSpeedControllerType.SPARK_MAX_BRUSHLESS;
+            WRIST_CAN_MOTOR_ISINVERTED                          = TConst.NOT_INVERTED;
+            WRIST_CAN_ENCODER_ISINVERTED                        = TConst.NOT_INVERTED;
 
             // PWM Constants
             // Talons, Victors and Sparks connected through Pwm

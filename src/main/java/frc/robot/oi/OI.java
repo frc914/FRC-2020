@@ -3,11 +3,13 @@ package frc.robot.oi;
 import com.torontocodingcollective.oi.TButton;
 import com.torontocodingcollective.oi.TGameController;
 import com.torontocodingcollective.oi.TGameController_Logitech;
+import com.torontocodingcollective.oi.TGameController_Xbox;
 import com.torontocodingcollective.oi.TOi;
 import com.torontocodingcollective.oi.TRumbleManager;
 import com.torontocodingcollective.oi.TStick;
 import com.torontocodingcollective.oi.TStickPosition;
 import com.torontocodingcollective.oi.TToggle;
+import com.torontocodingcollective.oi.TTrigger;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -32,8 +34,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class OI extends TOi {
 
-    private TGameController driverController = new TGameController_Logitech(0);
+    private TGameController driverController = new TGameController_Xbox(0);
     private TRumbleManager  driverRumble     = new TRumbleManager("Driver", driverController);
+    private TGameController opController     = new TGameController_Xbox(1); //TODO change if necessary, i just needed it to exist
 
     private TToggle         compressorToggle = new TToggle(driverController, TStick.LEFT);
     private TToggle         speedPidToggle   = new TToggle(driverController, TStick.RIGHT);
@@ -84,9 +87,6 @@ public class OI extends TOi {
      * @return {@link TStick} selected on the SmartDashboard. The default single
      *         stick drive is {@link TStick#RIGHT}
      */
-    public TStick getSelectedSingleStickSide() {
-        return driveSelector.getSingleStickSide();
-    }
 
     @Override
     public boolean getSpeedPidEnabled() {
@@ -104,6 +104,46 @@ public class OI extends TOi {
 
     public void setSpeedPidEnabled(boolean state) {
         speedPidToggle.set(state);
+    }
+
+    /************************
+    *       Driver        *
+    *************************/
+    //TODO also change, also needed their existence
+    public boolean shoot() {
+        return driverController.getButton(TTrigger.LEFT);
+    }
+
+    public boolean shootBack() {
+        return driverController.getButton(TTrigger.RIGHT);
+    }
+
+    /************************
+    *       OPERATOR        *
+    *************************/
+    //TODO also change, also needed their existence
+    public boolean intakeFwd() {
+        return opController.getButton(TTrigger.LEFT);
+    }
+
+    public boolean intakeBkd() {
+        return opController.getButton(TTrigger.RIGHT);
+    }
+
+    public boolean elevatorUp() {
+        return opController.getButton(TButton.A);
+    }
+
+    public boolean elevatorDown() {
+        return opController.getButton(TButton.B);
+    }
+
+    public boolean wristUp() {
+        return opController.getButton(TButton.Y);
+    }
+
+    public boolean wristDown() {
+        return opController.getButton(TButton.X);
     }
 
     @Override
