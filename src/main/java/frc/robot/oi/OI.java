@@ -45,6 +45,10 @@ public class OI extends TOi {
         return driverController.getButton(TButton.BACK);
     }
 
+    public boolean LimeLightAlignButton() {
+        return driverController.getButton(TButton.A);
+    }
+
     public boolean getCompressorEnabled() {
         return compressorToggle.get();
     }
