@@ -2,10 +2,11 @@ package frc.robot.commands.drive;
 
 import com.torontocodingcollective.commands.TDefaultDriveCommand;
 import com.torontocodingcollective.commands.TDifferentialDrive;
+import com.torontocodingcollective.oi.TButton;
+import com.torontocodingcollective.oi.TGameController_Xbox;
 import com.torontocodingcollective.oi.TStick;
 import com.torontocodingcollective.oi.TStickPosition;
 import com.torontocodingcollective.speedcontroller.TSpeeds;
-
 import frc.robot.Robot;
 import frc.robot.oi.OI;
 import frc.robot.subsystems.CanDriveSubsystem;
@@ -71,17 +72,40 @@ public class DefaultDriveCommand extends TDefaultDriveCommand {
         TStickPosition leftStickPosition = oi.getDriveStickPosition(TStick.LEFT);
         TStickPosition rightStickPosition = oi.getDriveStickPosition(TStick.RIGHT);
 
+        
+
         TSpeeds motorSpeeds;
 
         switch (oi.getSelectedDriveType()) {
 
+        case SINGLE_STICK:
+            TStickPosition singleStickPosition = rightStickPosition;
+            // if (singleStickSide == TStick.LEFT) {
+            //     singleStickPosition = leftStickPosition;
+            // }
+            motorSpeeds = differentialDrive.arcadeDrive(singleStickPosition);
+            break;
+
+        case TANK:
+            motorSpeeds = differentialDrive.tankDrive(leftStickPosition, rightStickPosition);
+            break;
+
         case ARCADE:
         default:
-            motorSpeeds = differentialDrive.arcadeDrive(leftStickPosition, rightStickPosition);
-            break;
+            if(oi.LimeLightAlignButton()){
+            TStickPosition AutoSpin = new TStickPosition(CanDriveSubsystem.AutoTurn(), 0);
+            motorSpeeds = differentialDrive.arcadeDrive(leftStickPosition, AutoSpin);
         }
-
-        driveSubsystem.setSpeed(motorSpeeds);
+            else{
+            motorSpeeds = differentialDrive.arcadeDrive(leftStickPosition, rightStickPosition);
+            }
+            break;
+        
+        }
+       
+            driveSubsystem.setSpeed(motorSpeeds);
+      
+       
     }
 
     @Override
@@ -89,4 +113,5 @@ public class DefaultDriveCommand extends TDefaultDriveCommand {
         // The default command does not end
         return false;
     }
+
 }
