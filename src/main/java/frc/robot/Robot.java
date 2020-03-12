@@ -20,6 +20,7 @@ import frc.robot.oi.AutoSelector;
 import frc.robot.oi.OI;
 import frc.robot.subsystems.CameraSubsystem;
 import frc.robot.subsystems.CanDriveSubsystem;
+import frc.robot.subsystems.ClimbSubsystem;
 import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.subsystems.PowerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -44,6 +45,7 @@ public class Robot extends TimedRobot {
 
     public static final CanDriveSubsystem           driveSubsystem              = new CanDriveSubsystem();
     public static final PneumaticsSubsystem         pneumaticsSubsystem         = new PneumaticsSubsystem();
+    public static final ClimbSubsystem              climbSubystem               = new ClimbSubsystem();
     public static final PowerSubsystem              powerSubsystem              = new PowerSubsystem();
     public static final CameraSubsystem             cameraSubsystem             = new CameraSubsystem();
     public final        ADXRS450_Gyro               gyro                        = new ADXRS450_Gyro(Port.kOnboardCS0);
@@ -55,9 +57,9 @@ public class Robot extends TimedRobot {
 
     private Command                         autoCommand;
 
-    private final I2C.Port i2cPort = I2C.Port.kOnboard;
-    private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
-    private final ColorMatch m_colorMatcher = new ColorMatch();
+    private static final I2C.Port i2cPort = I2C.Port.kOnboard;
+    public static final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+    public static final ColorMatch m_colorMatcher = new ColorMatch();
 
     private final Color kBlue = ColorMatch.makeColor(0.143, 0.427, 0.429);
     private final Color kGreen = ColorMatch.makeColor(0.197, 0.561, 0.240);
@@ -66,7 +68,7 @@ public class Robot extends TimedRobot {
 
     public String colorString;
 
-    public final DigitalInput beamBreakSensor = new DigitalInput(0); //TODO change
+    public final DigitalInput beamBreakSensor = new DigitalInput(0); 
     public Boolean beamBreak;
 
     // Add all of the subsystems to the subsystem list

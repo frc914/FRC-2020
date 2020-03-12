@@ -1,14 +1,21 @@
 package frc.robot.subsystems;
 
+import com.torontocodingcollective.oi.TStickPosition;
 import com.torontocodingcollective.sensors.encoder.TEncoder;
 import com.torontocodingcollective.sensors.gyro.TAnalogGyro;
 import com.torontocodingcollective.speedcontroller.TCanSpeedController;
 import com.torontocodingcollective.subsystem.TGyroDriveSubsystem;
 
+
+
+import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+
 import frc.robot.RobotConst;
 import frc.robot.RobotMap;
+import frc.robot.subsystems.CameraSubsystem.*;
 import frc.robot.commands.drive.DefaultDriveCommand;
 
 /**
@@ -22,7 +29,7 @@ public class CanDriveSubsystem extends TGyroDriveSubsystem {
     private static final boolean LOW_GEAR     = true;
     private static final boolean HIGH_GEAR    = false;
 
-    private Solenoid             shifter      = new Solenoid(RobotMap.SHIFTER_PNEUMATIC_PORT);
+    private final Solenoid             shifter      = new Solenoid(RobotMap.SHIFTER_PNEUMATIC_PORT);
     private Boolean              shiftState   = false;
 
     public CanDriveSubsystem() {
@@ -53,8 +60,8 @@ public class CanDriveSubsystem extends TGyroDriveSubsystem {
                 RobotConst.DRIVE_MAX_ROTATION_OUTPUT);
 
         // Get the encoders attached to the CAN bus speed controllers
-        TEncoder leftEncoder = getSpeedController(TSide.LEFT).getEncoder();
-        TEncoder rightEncoder = getSpeedController(TSide.RIGHT).getEncoder();
+        final TEncoder leftEncoder = getSpeedController(TSide.LEFT).getEncoder();
+        final TEncoder rightEncoder = getSpeedController(TSide.RIGHT).getEncoder();
 
         super.setEncoders(
                 leftEncoder,  RobotMap.LEFT_DRIVE_CAN_MOTOR_ISINVERTED,
@@ -95,11 +102,26 @@ public class CanDriveSubsystem extends TGyroDriveSubsystem {
         return shiftState;
     }
 
+
+
     @Override
     public void updatePeriodic() {
         super.updatePeriodic();
 
         SmartDashboard.putBoolean("Shifter State", isShifter());
     }
+//************************************************************************************************************* */
+//PID Shoot
+//************************************************************************************************************* */
+static PIDController TurnPID = new PIDController(0, 0, 0);
+//Tune p until minimum p ocelates, Up d (100th of p)slowly until it settles or straitens if it is sort of off add i(tiny 0.000001)(Kp, Ki, Kd)
 
+public static double AutoTurn(){
+
+    TurnPID.setSetpoint(0.0);
+    
+    double rotate = 0.0;
+    rotate = TurnPID.calculate(CameraSubsystem.OffsetHorizantal());
+    return rotate;
+}
 }

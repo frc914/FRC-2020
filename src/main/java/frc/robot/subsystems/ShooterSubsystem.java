@@ -8,9 +8,6 @@ import frc.robot.RobotMap.*;
 import frc.robot.commands.shooter.DefaultShooterCommand;
 
 
-/**
- *
- */
 public class ShooterSubsystem extends TSubsystem {
 
     // When these error ignore it, its dumb and does that. Thank you VS Code!
@@ -62,5 +59,6 @@ public class ShooterSubsystem extends TSubsystem {
     protected void initDefaultCommand() {
         setDefaultCommand(new DefaultShooterCommand());
     }
+
 
 }

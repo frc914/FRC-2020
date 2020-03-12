@@ -2,6 +2,8 @@ package frc.robot.subsystems;
 
 import com.torontocodingcollective.speedcontroller.TCanSpeedController;
 import com.torontocodingcollective.subsystem.TSubsystem;
+
+import edu.wpi.first.wpilibj.Solenoid;
 import frc.robot.RobotMap;
 
 
@@ -20,7 +22,7 @@ public class ClimbSubsystem extends TSubsystem {
         RobotMap.RIGHT_CLIMB_CAN_SPEED_CONTROLLER_ADDRESS,
         RobotMap.RIGHT_CLIMB_CAN_MOTOR_ISINVERTED);
   
-    Solenoid climbLock = Solenoid(RobotMap.CLIMB_LOCK);
+    Solenoid climbLock =new Solenoid(RobotMap.CLIMB_LOCK);
     
     public void goUp(){
         leftClimbMotor.set(1.0);
@@ -33,6 +35,7 @@ public class ClimbSubsystem extends TSubsystem {
     }
 
     public void stopClimb(){
+        
         leftClimbMotor.set(0.0);
         rightClimbMotor.set(0.0);
     }

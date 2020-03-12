@@ -89,9 +89,9 @@ public class RobotMap {
     // ******************************************
     // Pneumatics Ports
     // ******************************************
-    public static final int                     SHIFTER_PNEUMATIC_PORT = 8;
-    public static final int                     CLIMB_LOCK = 7;
-    public static final int                     INTAKE = 6;
+    public static final int                     SHIFTER_PNEUMATIC_PORT = 7;
+    public static final int                     CLIMB_LOCK = 6;
+    public static final int                     INTAKE = 5;
 
 
     // Initializers if this code will be deployed to more than one
