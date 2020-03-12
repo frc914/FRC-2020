@@ -4,6 +4,7 @@ import com.torontocodingcollective.sensors.encoder.TEncoder;
 import com.torontocodingcollective.speedcontroller.TCanSpeedController;
 import com.torontocodingcollective.subsystem.TSubsystem;
 
+import edu.wpi.first.wpilibj.controller.PIDController;
 import frc.robot.RobotConst;
 import frc.robot.RobotMap;
 import frc.robot.RobotMap.*;
@@ -65,13 +66,13 @@ public class ShooterSubsystem extends TSubsystem {
     }
 
     public void wristUp() {
-        wristMotor.set(-0.25);
-        wristMotor.set(-0.25);
+        wristMotor.set(-0.15);
+        wristMotor.set(-0.15);
     }
 
     public void wristDown() {
-        wristMotor.set(0.25);
-        wristMotor.set(0.25);
+        wristMotor.set(0.15);
+        wristMotor.set(0.15);
     }
 
     // Periodically update the dashboard and any PIDs or sensors

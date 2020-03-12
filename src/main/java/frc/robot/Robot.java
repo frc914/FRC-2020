@@ -136,14 +136,13 @@ public class Robot extends TimedRobot {
         }
         //gyro b r o k e
          double currAng = gyro.getAngle();
-        //  currAng=currAng - 0.155;
-        //gyro.getAngle() = currAng;
+         currAng=currAng - 0.155;
+        
 
         //TODO Tune the range to an accurate distance for WheelOfFortune
         SmartDashboard.putBoolean("Range", inRange);
         SmartDashboard.putNumber("Rng", prox);
         SmartDashboard.putString("Color", colorString);
-    
         SmartDashboard.putNumber("Gyro", currAng);
 
         //probably wrong if im being honest (i only really know programming beam breaks in c++ oops)
