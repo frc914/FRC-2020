@@ -26,6 +26,11 @@ public class DriveSelector {
      */
     public DriveControlType getDriveControlType() {
 
+            return DriveControlType.ARCADE;
+        }
+
+
+
         // switch (driveControlType.getSelected()) {
         // case DRIVE_CONTROL_TYPE_TANK:
         //     return DriveControlType.TANK;
@@ -50,6 +55,7 @@ public class DriveSelector {
             return TStick.RIGHT;
         // }
    }
+
 
     public void updatePeriodic() {
     }
