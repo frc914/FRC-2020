@@ -65,13 +65,13 @@ public class ShooterSubsystem extends TSubsystem {
     }
 
     public void wristUp() {
-        wristMotor.set(-1.0);
-        wristMotor.set(-1.0);
+        wristMotor.set(-0.25);
+        wristMotor.set(-0.25);
     }
 
     public void wristDown() {
-        wristMotor.set(1.0);
-        wristMotor.set(1.0);
+        wristMotor.set(0.25);
+        wristMotor.set(0.25);
     }
 
     // Periodically update the dashboard and any PIDs or sensors
@@ -83,5 +83,10 @@ public class ShooterSubsystem extends TSubsystem {
     protected void initDefaultCommand() {
         setDefaultCommand(new DefaultShooterCommand());
     }
+
+	public void wristStop() {
+        wristMotor.set(0);
+        wristMotor.set(0);
+	}
 
 }

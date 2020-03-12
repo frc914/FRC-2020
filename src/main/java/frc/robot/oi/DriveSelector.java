@@ -25,31 +25,9 @@ public class DriveSelector {
      * Get the Drive Type
      */
     public DriveControlType getDriveControlType() {
-
-        switch (driveControlType.getSelected()) {
-        case DRIVE_CONTROL_TYPE_TANK:
-            return DriveControlType.TANK;
-        case DRIVE_CONTROL_TYPE_SINGLE_STICK:
-            return DriveControlType.SINGLE_STICK;
-        case DRIVE_CONTROL_TYPE_ARCADE:
-        default:
             return DriveControlType.ARCADE;
         }
-    }
 
-    /**
-     * Get the Single Stick side
-     */
-    public TStick getSingleStickSide() {
-
-        switch (singleStickSide.getSelected()) {
-        case SINGLE_STICK_LEFT:
-            return TStick.LEFT;
-        case SINGLE_STICK_RIGHT:
-        default:
-            return TStick.RIGHT;
-        }
-    }
 
     public void updatePeriodic() {
     }

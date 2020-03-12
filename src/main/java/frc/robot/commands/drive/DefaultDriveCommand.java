@@ -71,23 +71,9 @@ public class DefaultDriveCommand extends TDefaultDriveCommand {
         TStickPosition leftStickPosition = oi.getDriveStickPosition(TStick.LEFT);
         TStickPosition rightStickPosition = oi.getDriveStickPosition(TStick.RIGHT);
 
-        TStick singleStickSide = oi.getSelectedSingleStickSide();
-
         TSpeeds motorSpeeds;
 
         switch (oi.getSelectedDriveType()) {
-
-        case SINGLE_STICK:
-            TStickPosition singleStickPosition = rightStickPosition;
-            if (singleStickSide == TStick.LEFT) {
-                singleStickPosition = leftStickPosition;
-            }
-            motorSpeeds = differentialDrive.arcadeDrive(singleStickPosition);
-            break;
-
-        case TANK:
-            motorSpeeds = differentialDrive.tankDrive(leftStickPosition, rightStickPosition);
-            break;
 
         case ARCADE:
         default:
