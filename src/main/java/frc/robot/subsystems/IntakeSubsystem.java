@@ -16,19 +16,7 @@ public class IntakeSubsystem extends TSubsystem {
     TCanSpeedController ballElevatorMotor = new TCanSpeedController(RobotMap.BALL_ELEVATOR_CAN_SPEED_CONTROLLER_TYPE, RobotMap.BALL_ELEVATOR_CAN_SPEED_CONTROLLER_ADDRESS, RobotMap.BALL_ELEVATOR_CAN_MOTOR_ISINVERTED);
     TCanSpeedController chassisEdgeMotor = new TCanSpeedController(RobotMap.CHASSIS_EDGE_CAN_SPEED_CONTROLLER_TYPE, RobotMap.CHASSIS_EDGE_CAN_SPEED_CONTROLLER_ADDRESS, RobotMap.CHASSIS_EDGE_CAN_MOTOR_ISINVERTED);
     
-
-        @Override
-        public int get() {
-            return 0;
-        }
-
-        @Override
-        public double getRate() {
-            return 0;
-        }
-    };
-
-    //3 motors - rollers, wrist, ball tower; 1 encoder - wrist; beam break - ball tower
+    
     @Override
     public void init() {
     }
