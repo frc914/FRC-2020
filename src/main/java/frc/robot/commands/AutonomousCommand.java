@@ -4,11 +4,17 @@ import com.torontocodingcollective.TConst;
 import com.torontocodingcollective.commands.drive.TDriveTimeCommand;
 import com.torontocodingcollective.commands.gyroDrive.TDriveOnHeadingDistanceCommand;
 import com.torontocodingcollective.commands.gyroDrive.TRotateToHeadingCommand;
+import com.torontocodingcollective.speedcontroller.TCanSpeedController;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+
 import frc.robot.Robot;
 import frc.robot.oi.AutoSelector;
+import frc.robot.subsystems.*;
+import frc.robot.RobotMap;
 
 /**
  * AutonomousCommand
@@ -16,11 +22,17 @@ import frc.robot.oi.AutoSelector;
  * This class extends the CommandGroup class which allows for a string of
  * commands to be chained together to create complex auto patterns.
  */
-public class AutonomousCommand extends CommandGroup {
+public class AutonomousCommand extends CommandBase{
+        static TCanSpeedController leftDriveMotor = new TCanSpeedController(RobotMap.LEFT_DRIVE_CAN_SPEED_CONTROLLER_TYPE,
+        RobotMap.LEFT_DRIVE_CAN_SPEED_CONTROLLER_ADDRESS, RobotMap.LEFT_DRIVE_CAN_MOTOR_ISINVERTED);
+
+        static TCanSpeedController rightDriveMotor = new TCanSpeedController(RobotMap.RIGHT_DRIVE_CAN_SPEED_CONTROLLER_TYPE,
+        RobotMap.RIGHT_DRIVE_CAN_SPEED_CONTROLLER_ADDRESS, RobotMap.RIGHT_DRIVE_CAN_MOTOR_ISINVERTED);
 
     public static final char LEFT   = 'L';
     public static final char RIGHT  = 'R';
     public static final char CENTER = 'C';
+    Timer timer;
 
     /**
      * Autonomous Command
@@ -47,77 +59,45 @@ public class AutonomousCommand extends CommandGroup {
     public AutonomousCommand() {
             //TODO use getAngle(), reset() to find out where it is located and to reset it at begining
             
-        
             
         // getting info
-        String robotStartPosition = AutoSelector.getRobotStartPosition();
-        String pattern            = AutoSelector.getPattern();
 
-        // Print out the user selection and Game config for debug later
-        System.out.println("Auto Command Configuration");
-        System.out.println("--------------------------");
-        System.out.println("Robot Position : " + robotStartPosition);
-        System.out.println("Pattern        : " + pattern);
+        timer = new Timer();
+    }
 
-        /* ***********************************************************
-         *  Drive Straight using GyroPID control
-         *  ***********************************************************/
-        if (pattern.equals(AutoSelector.PATTERN_STRAIGHT)) {
-            // Go forward 2 ft
-            this.addSequential(
-                    new TDriveOnHeadingDistanceCommand(250, 0, .95, 15, TConst.BRAKE_WHEN_FINISHED,
-                            Robot.oi, Robot.driveSubsystem));
+    @Override
+    public void initialize(){
+        timer.reset();
+        timer.start();
+    }
+
+    @Override
+    public void execute(){
+        if(timer.advanceIfElapsed(4.0)){
+                //drive forward
+                leftDriveMotor.set(0.1);
+                rightDriveMotor.set(0.1);
+        } else{
+                //shoot
+                if(timer.advanceIfElapsed(1.0)){
+                        ShooterSubsystem.wristDown();
+                }
+                else if(timer.advanceIfElapsed(2.0)){
+                        IntakeSubsystem.ballElevatorUp();
+                        ShooterSubsystem.shootFwd();
+                }
         }
+    }
 
-        /* ***********************************************************
-         *  Drive Straight with with no GyroPID control
-         *  ***********************************************************/
-        if (pattern.equals(AutoSelector.PATTERN_STR_NP)) {
-            // Go forward 2 ft
-            this.addSequential(
-                    new TDriveTimeCommand(.95, 6, TConst.BRAKE_WHEN_FINISHED,
-                            Robot.oi, Robot.driveSubsystem));
-        }
+    @Override
+    public void end(boolean interrupted){
+        //stp driving
+        leftDriveMotor.set(0.0);
+        rightDriveMotor.set(0.0);
+    }
 
-
-        /* ***********************************************************
-         *  Drive forward 2ft and then drive a 3ft box pattern
-         *  ***********************************************************/
-        if (pattern.equals(AutoSelector.PATTERN_BOX)) {
-            // Go forward 2 ft
-            this.addSequential(
-                    // 24 in, 0 deg, .5 speed, 5 sec, Brake
-                    new TDriveOnHeadingDistanceCommand(24, 0, .5, 5, TConst.COAST_WHEN_FINISHED,
-                            Robot.oi, Robot.driveSubsystem));
-
-            // Drive a 3 ft box
-            this.addSequential(
-                    new TDriveOnHeadingDistanceCommand(36, 0, .5, 5, TConst.BRAKE_WHEN_FINISHED,
-                            Robot.oi, Robot.driveSubsystem));
-
-            this.addSequential(new TRotateToHeadingCommand(90,
-                    Robot.oi, Robot.driveSubsystem));
-
-            this.addSequential(
-                    new TDriveOnHeadingDistanceCommand(36, 90, .5, 5, TConst.BRAKE_WHEN_FINISHED,
-                            Robot.oi, Robot.driveSubsystem));
-
-            this.addSequential(new TRotateToHeadingCommand(180,
-                    Robot.oi, Robot.driveSubsystem));
-
-            this.addSequential(
-                    new TDriveOnHeadingDistanceCommand(36, 180, .5, 5, TConst.BRAKE_WHEN_FINISHED,
-                            Robot.oi, Robot.driveSubsystem));
-
-            this.addSequential(new TRotateToHeadingCommand(270,
-                    Robot.oi, Robot.driveSubsystem));
-
-            this.addSequential(
-                    new TDriveOnHeadingDistanceCommand(36, 270, .5, 5, TConst.BRAKE_WHEN_FINISHED,
-                            Robot.oi, Robot.driveSubsystem));
-
-            this.addSequential(new TRotateToHeadingCommand(0,
-                    Robot.oi, Robot.driveSubsystem));
-        }
+    @Override
+    public boolean isFinished(){
+        return timer.advanceIfElapsed(8.0);
     }
 }

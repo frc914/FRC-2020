@@ -50,11 +50,14 @@ public class DefaultIntakeCommand extends TSafeCommand {
   @Override
   protected void execute() {
     //intake
-    if (Robot.oi.intakeFwd()) 
+    if (Robot.oi.intakeFwd()){ 
+      Robot.intakeSubsystem.intakeDown();
+      Timer.delay(0.2);
       Robot.intakeSubsystem.fwdIntake();
-    else if (Robot.oi.intakeBkd())
+    }else if (Robot.oi.intakeBkd()){
       Robot.intakeSubsystem.bkdIntake();
-    else 
+      Timer.delay(0.2);
+    }else 
       Robot.intakeSubsystem.stopIntake();
 
     //ball elevator

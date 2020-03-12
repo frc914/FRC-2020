@@ -3,7 +3,7 @@ package frc.robot;
 import com.torontocodingcollective.TConst;
 import com.torontocodingcollective.sensors.gyro.TAnalogGyro;
 import com.torontocodingcollective.speedcontroller.TCanSpeedController.TCanSpeedControllerType;
-import com.torontocodingcollective.speedcontroller.TPwmSpeedController.TPwmSpeedControllerType;
+
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into

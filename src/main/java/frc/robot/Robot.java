@@ -194,11 +194,6 @@ public class Robot extends TimedRobot {
         // Reset the gyro and the encoders
         Robot.driveSubsystem.setGyroAngle(0);
         Robot.driveSubsystem.resetEncoders();
-
-        // Initialize the robot command after initializing the game data
-        // because the game data will be used in the auto command.
-        autoCommand = new AutonomousCommand();
-        autoCommand.start();
     }
 
     /**
