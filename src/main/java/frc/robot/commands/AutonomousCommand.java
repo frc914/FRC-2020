@@ -75,8 +75,8 @@ public class AutonomousCommand extends CommandBase{
     public void execute(){
         if(timer.advanceIfElapsed(4.0)){
                 //drive forward
-                leftDriveMotor.set(0.1);
-                rightDriveMotor.set(0.1);
+                // leftDriveMotor.set(-0.1);
+                // rightDriveMotor.set(-0.1);
         } else{
                 //shoot
                 if(timer.advanceIfElapsed(1.0)){

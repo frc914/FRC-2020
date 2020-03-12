@@ -11,7 +11,7 @@ import com.torontocodingcollective.oi.TStickPosition;
 import com.torontocodingcollective.oi.TToggle;
 import com.torontocodingcollective.oi.TTrigger;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  * Sticks: Right Stick = Drive Stick Left Stick = Drive Stick Right Stick Press
  * = Toggle PIDs Left Stick Press = Toggle Compressor
+ * 
  *
  * Buttons: Start Button = Reset Encoders and Gyro Back Button = Cancel any
  * Command

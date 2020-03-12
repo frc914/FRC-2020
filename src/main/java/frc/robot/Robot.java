@@ -25,7 +25,7 @@ import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.subsystems.PowerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
-import frc.robot.subsystems.WheelOfFortuneSubsystem;
+
 
 import com.revrobotics.ColorSensorV3;
 import com.revrobotics.ColorMatchResult;
@@ -51,7 +51,7 @@ public class Robot extends TimedRobot {
     public final        ADXRS450_Gyro               gyro                        = new ADXRS450_Gyro(Port.kOnboardCS0);
     public static final IntakeSubsystem             intakeSubsystem             = new IntakeSubsystem();
     public static final ShooterSubsystem            shooterSubsystem            = new ShooterSubsystem();
-    public static final WheelOfFortuneSubsystem     wheeloffortunateSubsystem   = new WheelOfFortuneSubsystem();
+    
 
     public static OI                        oi;
 
@@ -79,7 +79,7 @@ public class Robot extends TimedRobot {
         subsystemLs.add(cameraSubsystem);
         subsystemLs.add(intakeSubsystem);
         subsystemLs.add(shooterSubsystem);
-        subsystemLs.add(wheeloffortunateSubsystem);
+        // subsystemLs.add(wheeloffortunateSubsystem);
     }
 
     /**
