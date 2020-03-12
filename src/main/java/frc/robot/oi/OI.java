@@ -36,7 +36,7 @@ public class OI extends TOi {
 
     private TGameController driverController = new TGameController_Xbox(0);
     private TRumbleManager  driverRumble     = new TRumbleManager("Driver", driverController);
-    private TGameController opController     = new TGameController_Xbox(1); //TODO change if necessary, i just needed it to exist
+    private TGameController opController     = new TGameController_Xbox(1); 
 
     private TToggle         compressorToggle = new TToggle(driverController, TStick.LEFT);
     private TToggle         speedPidToggle   = new TToggle(driverController, TStick.RIGHT);

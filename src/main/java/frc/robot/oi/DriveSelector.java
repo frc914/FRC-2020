@@ -38,9 +38,9 @@ public class DriveSelector {
         //     return DriveControlType.SINGLE_STICK;
         // case DRIVE_CONTROL_TYPE_ARCADE:
         // default:
-            return DriveControlType.ARCADE;
+        //    return DriveControlType.ARCADE;
         // }
-    }
+    
 
     /**
      * Get the Single Stick side

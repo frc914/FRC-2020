@@ -25,17 +25,19 @@ public class ClimbSubsystem extends TSubsystem {
     Solenoid climbLock =new Solenoid(RobotMap.CLIMB_LOCK);
     
     public void goUp(){
+        unlockClimb();
         leftClimbMotor.set(1.0);
         rightClimbMotor.set(1.0);
     }
 
     public void goDown(){
+        unlockClimb();
         leftClimbMotor.set(-1.0);
         rightClimbMotor.set(-1.0);
     }
 
     public void stopClimb(){
-        
+        lockClimb();
         leftClimbMotor.set(0.0);
         rightClimbMotor.set(0.0);
     }
